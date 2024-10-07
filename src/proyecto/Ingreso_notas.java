@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class Ingreso_notas {
 
     //Arrays para almacenar los nombres y las notas
-    static String[] Nombres = new String[50];
-    static Double[][] Notas = new Double[50][3]; // son 3 notas por estudinate
-    static Double[] Promedios = new Double[50];
+    static String[] nombres = new String[50];
+    static Double[][] notas = new Double[50][3]; // son 3 notas por estudinate
+    static Double[] promedios = new Double[50];
     static int contadorEstudiantes = 0; // Contador estudiantes
 
     // Variables para almacenar las credenciales de usuario
@@ -87,7 +87,7 @@ public class Ingreso_notas {
         String contraseña = scanner.nextLine();
 
         if (usuario.equals(usuarioRegistrado) && contraseña.equals(contraseñaRegistrada)) {
-            System.out.println("Inicio de sesión exitoso.");
+            System.out.println( usuario + " Inicio de sesión exitoso.");
             return true;
         } else {
             System.out.println("Usuario o contraseña incorrectos.");
@@ -104,7 +104,7 @@ public class Ingreso_notas {
         System.out.println("Ingrese nueva contraseña:");
         contraseñaRegistrada = scanner.nextLine();
 
-        System.out.println("Registro exitoso. Por favor, inicie sesión.");
+        System.out.println( usuarioRegistrado + " Registro exitoso. Por favor, inicie sesión.");
     }
 
     // Función para ingresar estudiantes
@@ -116,7 +116,7 @@ public class Ingreso_notas {
 
         for (int i = 0; i < cantidad; i++) {
             System.out.println("Ingrese el nombre del estudiante " + (i + 1) + ":");
-            Nombres[contadorEstudiantes] = scanner.nextLine();
+            nombres[contadorEstudiantes] = scanner.nextLine();
             contadorEstudiantes++;
         }
     }
@@ -126,14 +126,14 @@ public class Ingreso_notas {
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < contadorEstudiantes; i++) {
             double sumaNotas = 0;
-            System.out.println("Ingrese las notas para " + Nombres[i] + ":");
+            System.out.println("Ingrese las notas para " + nombres[i] + ":");
             for (int j = 0; j < 3; j++) { // Suponemos que son 3 notas por estudiante
                 System.out.println("Nota " + (j + 1) + ":");
-                Notas[i][j] = scanner.nextDouble();
-                sumaNotas += Notas[i][j];
+                notas[i][j] = scanner.nextDouble();
+                sumaNotas += notas[i][j];
             }
             // Calculamos el promedio
-            Promedios[i] = sumaNotas / 3;
+            promedios[i] = sumaNotas / 3;
         }
     }
 
@@ -142,11 +142,11 @@ public class Ingreso_notas {
     public static void consultarEstudiantes() {
         System.out.println("Lista de estudiantes, sus notas y promedios:");
         for (int i = 0; i < contadorEstudiantes; i++) {
-            System.out.print(Nombres[i] + " - Notas: ");
+            System.out.print(nombres[i] + " - Notas: ");
             for (int j = 0; j < 3; j++) {
-                System.out.print(Notas[i][j] + " ");
+                System.out.print(notas[i][j] + " , ");
             }
-            System.out.println("- Promedio: " + Promedios[i]);
+            System.out.println("- Promedio: " + promedios[i]);
         }
     }
 
